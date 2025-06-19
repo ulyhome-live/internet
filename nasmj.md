@@ -1,5 +1,5 @@
 >[!NOTE]
-> ## **step-by-step guidance** and a **customized `docker-compose.yaml`** for your scenario, including clear instructions on how to set up **Nextcloud All-in-One** (AIO) in an LXC container, **Nginx Proxy Manager** (NPM), and **ATT Fiber NAT/Gaming port forwarding** for your [nasmj.duckdns.org](http://nasmj.duckdns.org) DDNS.
+> ## **step-by-step guidance** and a **customized `docker-compose.yaml`** for your scenario, including clear instructions on how to set up **Nextcloud All-in-One** (AIO) in an LXC container, **Nginx Proxy Manager** (NPM), and **ATT Fiber NAT/Gaming port forwarding** for your [xxx.duckdns.org](http://xxx.duckdns.org) DDNS.
 
 ---
 
@@ -9,12 +9,12 @@
 
 * **Proxmox Host:**
 
-  * IP: `192.168.1.50/25` (mask means `.1.50` through `.1.126`)
-  * Gateway: `192.168.1.254`
+  * IP: `192.168.1.50/25`
+  * Gateway: `192.168.1.1`
 * **Nextcloud AIO (LXC 1000):**
 
   * IP: `192.168.1.60/24` *(You probably meant `/25` to match host, but `/24` also works)*
-  * Gateway: `192.168.1.254`
+  * Gateway: `192.168.1.1`
 * **Nginx Proxy Manager (NPM):**
 
   * Will run either on the **Proxmox host** or in **another container/VM**.
@@ -22,9 +22,9 @@
 
 ---
 
-## 2. **Port Forwarding (NAT/Gaming on ATT Fiber BGW320-505)**
+## 2. **Port Forwarding (NAT/Gaming)**
 
-You’ll forward external traffic from ATT's public IP (`172.4.93.198`) to your internal services:
+You’ll forward external traffic from ATT's public IP services:
 
 * **Ports for Nextcloud (LXC 1000):**
 
@@ -36,7 +36,7 @@ You’ll forward external traffic from ATT's public IP (`172.4.93.198`) to your 
 ### **How To Set Up on ATT BGW320-505**
 
 1. **Log into the modem's web interface**:
-   Go to `http://192.168.1.254` in your browser.
+   Go to `http://192.168.1.1` in your browser.
 
 2. **NAT/Gaming Tab**:
 
@@ -62,7 +62,7 @@ You’ll forward external traffic from ATT's public IP (`172.4.93.198`) to your 
 
 ## 3. **DuckDNS & Dynamic DNS**
 
-You already set up [nasmj.duckdns.org](http://nasmj.duckdns.org) and pointed it to your ATT public IP.
+You already set up [xxx.duckdns.org](http://xxx.duckdns.org) and pointed it to your ATT public IP.
 
 * Ensure your DuckDNS client is running somewhere in your network to keep your IP updated.
 
@@ -76,7 +76,6 @@ You already set up [nasmj.duckdns.org](http://nasmj.duckdns.org) and pointed it 
 ### **A. Nginx Proxy Manager Compose File**
 
 ```yaml
-version: "3"
 services:
   npm:
     image: jc21/nginx-proxy-manager:latest
@@ -145,7 +144,7 @@ networks:
 2. Log in (default: `admin@example.com` / `changeme`)
 3. Add a **Proxy Host**:
 
-   * **Domain Name:** `nasmj.duckdns.org`
+   * **Domain Name:** `xxx.duckdns.org`
    * **Forward Hostname/IP:** `192.168.1.60`
    * **Forward Port:** `11000` *(as set above for Apache in Nextcloud AIO)*
    * **Enable SSL**: Request a new SSL certificate using Let's Encrypt.
@@ -161,7 +160,7 @@ networks:
 * If the Nextcloud Talk server is still unreachable:
 
   * Double-check port 3478 forwarding (UDP and TCP).
-  * Make sure your AIO's talk/turn/stun config points to your public DNS name: `nasmj.duckdns.org`.
+  * Make sure your AIO's talk/turn/stun config points to your public DNS name: `xxx.duckdns.org`.
 * In Nextcloud, under **Settings > Administration > Overview**, warnings about setup can take a while to clear after a fresh install. Refresh after 5–10 min.
 * Always restart both NPM and Nextcloud AIO after config changes.
 
@@ -170,7 +169,7 @@ networks:
 ## **Summary Diagram**
 
 ```
-[Internet] --> [ATT BGW320-505 Modem]
+[Internet] --> [ATT Modem]
          |           |    (Port 80/443 --> 192.168.1.50) 
          |           |    (Port 3478 --> 192.168.1.60)
          |           v
