@@ -9,11 +9,11 @@
 
 * **Proxmox Host:**
 
-  * IP: `192.168.1.50/25`
+  * IP: `192.168.1.50/24`
   * Gateway: `192.168.1.1`
 * **Nextcloud AIO (LXC 1000):**
 
-  * IP: `192.168.1.60/24` *(You probably meant `/25` to match host, but `/24` also works)*
+  * IP: `192.168.1.60/24`
   * Gateway: `192.168.1.1`
 * **Nginx Proxy Manager (NPM):**
 
@@ -33,7 +33,7 @@ You’ll forward external traffic from ATT's public IP services:
 
   * 80, 443 TCP → `192.168.1.50` (Proxmox host or wherever NPM is installed)
 
-### **How To Set Up on ATT BGW320-505**
+### **How To Set Up on ATT Modem**
 
 1. **Log into the modem's web interface**:
    Go to `http://192.168.1.1` in your browser.
