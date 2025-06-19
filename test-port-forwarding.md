@@ -26,7 +26,7 @@ First, make sure your DuckDNS domain is pointing to your current public IP.
 * **Ping your DuckDNS domain**:
 
   ```
-  ping nasmj.duckdns.org
+  ping xxx.duckdns.org
   ```
 
   Ensure it matches your ATT public IP.
@@ -53,8 +53,8 @@ Use [https://www.yougetsignal.com/tools/open-ports/](https://www.yougetsignal.co
 * **Turn off WiFi** and use mobile data.
 * In your browser, open:
 
-  * `http://nasmj.duckdns.org` (should redirect to HTTPS and load Nextcloud)
-  * `https://nasmj.duckdns.org`
+  * `http://xxx.duckdns.org` (should redirect to HTTPS and load Nextcloud)
+  * `https://xxx.duckdns.org`
 * You can also use an SSH app to test port 3478 (for advanced users).
 
 ---
@@ -64,10 +64,10 @@ Use [https://www.yougetsignal.com/tools/open-ports/](https://www.yougetsignal.co
 If you have access to a VPS or cloud server (like DigitalOcean, AWS, etc), SSH in and run:
 
 ```bash
-curl -I http://nasmj.duckdns.org
-curl -I https://nasmj.duckdns.org
-nc -vz nasmj.duckdns.org 3478
-nc -vzu nasmj.duckdns.org 3478
+curl -I http://xxx.duckdns.org
+curl -I https://xxx.duckdns.org
+nc -vz xxx.duckdns.org 3478
+nc -vzu xxx.duckdns.org 3478
 ```
 
 This will show if your public ports are reachable from **anywhere on the internet**.
