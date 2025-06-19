@@ -1,5 +1,5 @@
 >[!NOTE]
->**To be absolutely sure your ports are open and accessible from the public internet,** you’ll need to check from **both inside and outside** your network.
+> ## **To be absolutely sure your ports are open and accessible from the public internet,** you’ll need to check from **both inside and outside** your network.
 
 Here’s a step-by-step guide for **testing your port forwarding/NAT rules**:
 
