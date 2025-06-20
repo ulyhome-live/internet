@@ -1,0 +1,7 @@
+{
+  "name": "QR Tools Devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "./post-create.sh"
+}
