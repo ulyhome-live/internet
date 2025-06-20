@@ -1,9 +1,5 @@
 {
   "name": "QR Tool Dev Environment",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
   "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
   "customizations": {
     "vscode": {
@@ -20,7 +16,5 @@
         }
       ]
     }
-  },
-  "features": {},
-  "settings": {}
+  }
 }
