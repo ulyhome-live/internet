@@ -1,20 +1,6 @@
-{
-  "name": "QR Tool Dev Environment",
-  "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
-  "customizations": {
-    "vscode": {
-      "tasks": [
-        {
-          "label": "Run QR Tool",
-          "type": "shell",
-          "command": "./qr-tool-unified.sh",
-          "presentation": {
-            "reveal": "always",
-            "panel": "dedicated"
-          },
-          "problemMatcher": []
-        }
-      ]
-    }
-  }
-}
+#!/bin/bash
+
+sudo apt-get update
+sudo apt-get install -y qrencode zbar-tools openssl zenity
+echo "All dependencies are installed!"
+chmod +x /workspaces/$(basename $(pwd))/qr-tool-unified.sh || true
